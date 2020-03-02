@@ -36,7 +36,7 @@ function Login(props) {
       }
 
     return (
-      <form onClick={Submit}>
+      <form onClick={submitLogin}>
       <label>
         Username:
         <input type="text" name="username" />
@@ -45,7 +45,6 @@ function Login(props) {
         Password:
         <input type="password" name="password" />
       </label>
-      <input type="submit" value="Submit" />
       <button>Submit</button>
     </form>
     )
