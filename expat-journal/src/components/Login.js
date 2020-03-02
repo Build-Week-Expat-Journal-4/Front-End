@@ -36,9 +36,18 @@ function Login(props) {
       }
 
     return (
-        <div>
-            {/* insert form here */}
-        </div>
+      <form onClick={Submit}>
+      <label>
+        Username:
+        <input type="text" name="username" />
+      </label>
+      <label>
+        Password:
+        <input type="password" name="password" />
+      </label>
+      <input type="submit" value="Submit" />
+      <button>Submit</button>
+    </form>
     )
 }
 
