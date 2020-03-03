@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import axios from "axios"
 import axiosWithAuth from '../utils/axiosWithAuth'
 
 function Login(props) {
@@ -18,10 +19,11 @@ function Login(props) {
     //axios call to login
     const submitLogin = e => {
         e.preventDefault()
-        axiosWithAuth()
-        .post('', login)
+        axios
+        .post('https://expat-journal4.herokuapp.com/api/auth/login', login)
         .then(response => {
-          window.localStorage.setItem('token', response.data.payload)
+            console.log(response)
+          window.localStorage.setItem("token", response.data.token)
           props.history.push('/home')
         })
         .catch(error => {
@@ -36,6 +38,15 @@ function Login(props) {
     return (
         <div>
             {/* insert form here */}
+            <form onSubmit={submitLogin}>
+                <input type="text" name="username" onChange={handleChanges} value={login.username}>
+
+                </input>
+                <input type="password" name="password" onChange={handleChanges} value={login.password}>
+                    
+                </input>
+                <button type="submit">Login</button>
+            </form>
         </div>
     )
 }

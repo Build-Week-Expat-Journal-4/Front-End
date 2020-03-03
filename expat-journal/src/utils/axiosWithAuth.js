@@ -2,12 +2,13 @@ import axios from 'axios'
 
 function axiosWithAuth() {
     const token = window.localStorage.getItem('token')
+    console.log(token)
     
     return axios.create({
         headers: {
             authorization: token
         },
-        baseURL: ''
+        baseURL: 'https://expat-journal4.herokuapp.com/api'
     })
 }
 

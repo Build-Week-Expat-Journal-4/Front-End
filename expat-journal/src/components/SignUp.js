@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
+import axios from "axios"
 
-function SignUp() {
+function SignUp(props) {
 
     const [newUser, setNewUser] = useState({
+        first_name: '',
+        last_name: '',
         username:'',
-        password:''
+        password:'',
+        email: ''
     })
 
     const handleChanges = e => {
@@ -14,10 +18,37 @@ function SignUp() {
         })
     }
 
+    
+    const submitSignUp = e => {
+        e.preventDefault()
+        axios
+        .post('https://expat-journal4.herokuapp.com/api/auth/register/', newUser)
+        .then(response => {
+          console.log(response)
+          props.history.push('/login')
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        setNewUser({
+            first_name: '',
+            last_name: '',
+            username:'',
+            password:'',
+            email: ''
+        })
+      }
+
     return (
-        <div>
-            {/* insert form here */}
-        </div>
+        
+        <form onSubmit={submitSignUp}>
+            <input type="text" name="first_name" onChange={handleChanges}></input>
+            <input type="text" name="last_name" onChange={handleChanges}></input>
+            <input type="text" name="username" onChange={handleChanges}></input>
+            <input type="text" name="password" onChange={handleChanges}></input>
+            <input type="text" name="email" onChange={handleChanges}></input>
+            <button>Sign Up</button>
+        </form>
     )
 }
 
