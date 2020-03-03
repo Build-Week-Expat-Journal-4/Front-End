@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axios from "axios"
+
 
 function Login(props) {
 
@@ -22,10 +23,11 @@ function Login(props) {
     //axios call to login
     const submitLogin = e => {
         e.preventDefault()
-        axiosWithAuth()
-        .post('', login)
+        axios
+        .post('https://expat-journal4.herokuapp.com/api/auth/login', login)
         .then(response => {
-          window.localStorage.setItem('token', response.data.payload)
+            console.log(response)
+          window.localStorage.setItem("token", response.data.token)
           props.history.push('/home')
         })
         .catch(error => {
@@ -38,6 +40,7 @@ function Login(props) {
       }
 
     return (
+
       <form onClick={handleSubmit(submitLogin)}>
       <label>
         Username:

@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axios from "axios"
 
-function SignUp() {
+
+function SignUp(props) {
 
     const { register, handleSubmit, watch, errors } = useForm()
 
@@ -22,7 +23,29 @@ function SignUp() {
         })
     }
 
+    
+    const submitSignUp = e => {
+        e.preventDefault()
+        axios
+        .post('https://expat-journal4.herokuapp.com/api/auth/register/', newUser)
+        .then(response => {
+          console.log(response)
+          props.history.push('/login')
+        })
+        .catch(error => {
+          console.log(error)
+        })
+        setNewUser({
+            first_name: '',
+            last_name: '',
+            username:'',
+            password:'',
+            email: ''
+        })
+      }
+
     return (
+      
         <form onClick={handleSubmit}>
         <label>
           First Name:
@@ -54,6 +77,7 @@ function SignUp() {
           
         <button>Sign Up</button>
       </form>
+
     )
 }
 
