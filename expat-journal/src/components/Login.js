@@ -1,8 +1,12 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import styled from 'styled-components';
 import axios from "axios"
-import axiosWithAuth from '../utils/axiosWithAuth'
+
 
 function Login(props) {
+
+  const { register, handleSubmit, watch, errors } = useForm()
 
     const [login, setLogin] = useState({
         username: '',
@@ -36,18 +40,21 @@ function Login(props) {
       }
 
     return (
-        <div>
-            {/* insert form here */}
-            <form onSubmit={submitLogin}>
-                <input type="text" name="username" onChange={handleChanges} value={login.username}>
 
-                </input>
-                <input type="password" name="password" onChange={handleChanges} value={login.password}>
-                    
-                </input>
-                <button type="submit">Login</button>
-            </form>
-        </div>
+      <form onClick={handleSubmit(submitLogin)}>
+      <label>
+        Username:
+        <input type="text" name="username" ref={register({ required: true, minLength:{value: 6, message: "Your Username is too Short!"} })}/>
+      </label>
+    <p>{errors.username && errors.username.message}</p>
+      <label>
+        Password:
+        <input type="password" name="password" ref={register({ required: true, minLength:{value: 6, message: "Your Password is too Short!"} })}/>
+
+      </label>
+    <p>{errors.password && errors.password.message}</p>
+      <button>Submit</button>
+    </form>
     )
 }
 
