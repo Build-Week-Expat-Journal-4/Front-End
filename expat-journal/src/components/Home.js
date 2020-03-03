@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
+import styled from 'styled-components';
 import axiosWithAuth from "../utils/axiosWithAuth";
 
 function Home() {
 
     const [stories, setStories] = useState([]) 
+
+    const Home = styled.h1`
+        color: dodgerblue;
+        border: 3px inset teal;
+    `
 
     //gets all current stories
     useEffect(() => {
@@ -23,7 +29,7 @@ function Home() {
     return (
         <div>
             {/* main page - photos/stories will be here */}
-            <h1>home page</h1>
+            <Home>Home Page</Home>
             {stories.map(story => {
                 return (
                     <div>
