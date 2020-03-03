@@ -44,15 +44,15 @@ function Login(props) {
       <form onClick={handleSubmit(submitLogin)}>
       <label>
         Username:
-        <input type="text" name="username" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Your Username is too Short!"} })}/>
+          <input type="text" name="username" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Your Username is too Short!"} })}/>
       </label>
-    <p>{errors.username && errors.username.message}</p>
+      <p>{errors.username && errors.username.message}</p>
       <label>
         Password:
-        <input type="password" name="password" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Your Password is too Short!"} })}/>
+          <input type="password" name="password" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Your Password is too Short!"} })}/>
 
       </label>
-    <p>{errors.password && errors.password.message}</p>
+      <p>{errors.password && errors.password.message}</p>
       <button>Submit</button>
     </form>
     )
