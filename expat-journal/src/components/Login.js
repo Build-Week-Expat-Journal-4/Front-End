@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
+import axios from "axios"
 import axiosWithAuth from '../utils/axiosWithAuth'
 
-function Login() {
+function Login(props) {
 
     const [login, setLogin] = useState({
         username: '',
@@ -18,11 +19,12 @@ function Login() {
     //axios call to login
     const submitLogin = e => {
         e.preventDefault()
-        axiosWithAuth()
-        .post('/auth/login', login)
+        axios
+        .post('https://expat-journal4.herokuapp.com/api/auth/login', login)
         .then(response => {
-          window.localStorage.setItem('token', response.data.payload)
-          e.history.push('/home')
+            console.log(response)
+          window.localStorage.setItem("token", response.data.token)
+          props.history.push('/home')
         })
         .catch(error => {
           console.log(error)
@@ -36,15 +38,15 @@ function Login() {
     return (
         <div>
             {/* insert form here */}
-            {/* <form onSubmit={submitLogin}>
-                <input type="text" name="username" onChange={handleChanges}>
+            <form onSubmit={submitLogin}>
+                <input type="text" name="username" onChange={handleChanges} value={login.username}>
 
                 </input>
-                <input type="password" name="password" onChange={handleChanges}>
+                <input type="password" name="password" onChange={handleChanges} value={login.password}>
                     
                 </input>
                 <button type="submit">Login</button>
-            </form> */}
+            </form>
         </div>
     )
 }
