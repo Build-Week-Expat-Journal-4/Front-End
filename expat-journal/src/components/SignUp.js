@@ -3,8 +3,11 @@ import React, {useState} from 'react'
 function SignUp() {
 
     const [newUser, setNewUser] = useState({
+        first_name: '',
+        last_name: '',
         username:'',
-        password:''
+        password:'',
+        email: ''
     })
 
     const handleChanges = e => {
@@ -15,6 +18,7 @@ function SignUp() {
     }
 
     return (
+        
         <div>
             {/* insert form here */}
         </div>

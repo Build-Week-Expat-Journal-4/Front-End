@@ -5,6 +5,8 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 function Login(props) {
 
+  const { register, handleSubmit, watch, errors } = useForm()
+
     const [login, setLogin] = useState({
         username: '',
         password: ''
@@ -36,15 +38,18 @@ function Login(props) {
       }
 
     return (
-      <form onClick={submitLogin}>
+      <form onClick={handleSubmit(submitLogin)}>
       <label>
         Username:
-        <input type="text" name="username" />
+        <input type="text" name="username" ref={register({ required: true, minLength:{value: 6, message: "Your Username is too Short!"} })}/>
       </label>
+    <p>{errors.username && errors.username.message}</p>
       <label>
         Password:
-        <input type="password" name="password" />
+        <input type="password" name="password" ref={register({ required: true, minLength:{value: 6, message: "Your Password is too Short!"} })}/>
+
       </label>
+    <p>{errors.password && errors.password.message}</p>
       <button>Submit</button>
     </form>
     )
