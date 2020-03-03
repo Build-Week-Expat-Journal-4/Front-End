@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
 
-function Login(props) {
+function Login() {
 
     const [login, setLogin] = useState({
         username: '',
@@ -19,10 +19,10 @@ function Login(props) {
     const submitLogin = e => {
         e.preventDefault()
         axiosWithAuth()
-        .post('', login)
+        .post('/auth/login', login)
         .then(response => {
           window.localStorage.setItem('token', response.data.payload)
-          props.history.push('/home')
+          e.history.push('/home')
         })
         .catch(error => {
           console.log(error)
@@ -36,6 +36,15 @@ function Login(props) {
     return (
         <div>
             {/* insert form here */}
+            {/* <form onSubmit={submitLogin}>
+                <input type="text" name="username" onChange={handleChanges}>
+
+                </input>
+                <input type="password" name="password" onChange={handleChanges}>
+                    
+                </input>
+                <button type="submit">Login</button>
+            </form> */}
         </div>
     )
 }

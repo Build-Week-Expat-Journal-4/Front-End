@@ -7,7 +7,7 @@ function axiosWithAuth() {
         headers: {
             authorization: token
         },
-        baseURL: ''
+        baseURL: 'https://expat-journal4.herokuapp.com/api'
     })
 }
 

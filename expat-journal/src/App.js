@@ -13,8 +13,8 @@ function App() {
     <div className="App">
       <h1>Expat Journal</h1>
         <Switch>
-          <Route exact path = "/" component={Login}/>
-          <Route exact path = "/register" component={SignUp}/>
+          <Route exact path = "/login" component={Login}/>
+          <Route exact path = "/" component={SignUp}/>
           <PrivateRoute exact path="/home" component={Home}/>
         </Switch>
     </div>
