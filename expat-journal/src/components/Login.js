@@ -22,7 +22,7 @@ function Login(props) {
 
     //axios call to login
     const submitLogin = e => {
-        e.preventDefault()
+        // e.preventDefault()
         axios
         .post('https://expat-journal4.herokuapp.com/api/auth/login', login)
         .then(response => {
@@ -44,12 +44,12 @@ function Login(props) {
       <form onClick={handleSubmit(submitLogin)}>
       <label>
         Username:
-        <input type="text" name="username" ref={register({ required: true, minLength:{value: 6, message: "Your Username is too Short!"} })}/>
+        <input type="text" name="username" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Your Username is too Short!"} })}/>
       </label>
     <p>{errors.username && errors.username.message}</p>
       <label>
         Password:
-        <input type="password" name="password" ref={register({ required: true, minLength:{value: 6, message: "Your Password is too Short!"} })}/>
+        <input type="password" name="password" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Your Password is too Short!"} })}/>
 
       </label>
     <p>{errors.password && errors.password.message}</p>
