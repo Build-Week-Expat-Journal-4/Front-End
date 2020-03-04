@@ -2,6 +2,7 @@ import axios from 'axios'
 
 function axiosWithAuth() {
     const token = window.localStorage.getItem('token')
+    
     console.log(token)
     
     return axios.create({

@@ -6,7 +6,7 @@ import axios from "axios"
 
 function SignUp(props) {
 
-    const { register, handleSubmit, watch, errors } = useForm()
+    const { register, handleSubmit, errors } = useForm()
 
     const [newUser, setNewUser] = useState({
         first_name: '',
@@ -25,7 +25,7 @@ function SignUp(props) {
 
     
     const submitSignUp = e => {
-        e.preventDefault()
+        // e.preventDefault()
         axios
         .post('https://expat-journal4.herokuapp.com/api/auth/register/', newUser)
         .then(response => {
@@ -46,16 +46,37 @@ function SignUp(props) {
 
     return (
       
+<<<<<<< HEAD
         <form onClick={handleSubmit(submitSignUp)}>
+=======
+        <form onSubmit={handleSubmit(submitSignUp)}>
+>>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
         <label>
           First Name:
-          <input type="text" name="first_name" ref={register({ required: true})}/>
+          <input type="text" name="first_name" onChange={handleChanges} ref={register({ required: true})}/>
         </label>
     
         <label>
           Last Name:
+<<<<<<< HEAD
           <input type="text" name="last_name" ref={register({ required: true})}/>
         </label>
+=======
+          <input type="text" name="last_name" onChange={handleChanges} ref={register({ required: true})}/>
+          </label>
+
+          <label>
+             Username:
+        <input type="text" name="username" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
+      </label>
+         <p>{errors.username && errors.username.message}</p>
+      <label>
+        Password:
+        <input type="password" name="password" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
+
+      </label>
+        <p>{errors.password && errors.password.message}</p>
+>>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
 
         <label>
           Username:
@@ -73,7 +94,7 @@ function SignUp(props) {
         </label>
           
           
-        <button>Sign Up</button>
+        <button type="submit">Sign Up</button>
       </form>
 
     )
