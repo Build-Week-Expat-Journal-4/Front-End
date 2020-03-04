@@ -11,6 +11,10 @@ function Home() {
         border: 3px inset teal;
     `
 
+    const Story1 = styled.h2 `
+        color: red;
+    `
+
     //gets all current stories
     useEffect(() => {
         axiosWithAuth()
@@ -33,7 +37,7 @@ function Home() {
             {stories.map(story => {
                 return (
                     <div>
-                        <h2>{story.title}</h2>
+                        <Story1>{story.title}</Story1>
                         <p>{story.story}</p>
                         <p>{story.location}</p>
                         {/* <img src={story.img-link}/>
