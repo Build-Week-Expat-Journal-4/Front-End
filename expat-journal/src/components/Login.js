@@ -6,11 +6,12 @@ import axios from "axios"
 
 function Login(props) {
 
-  const { register, handleSubmit, watch, errors } = useForm()
+  const { register, handleSubmit, errors } = useForm()
 
     const [login, setLogin] = useState({
         username: '',
-        password: ''
+        password: '',
+        id:""
     })
 
     const handleChanges = e => {
@@ -22,12 +23,13 @@ function Login(props) {
 
     //axios call to login
     const submitLogin = e => {
-        e.preventDefault()
+        // e.preventDefault()
         axios
         .post('https://expat-journal4.herokuapp.com/api/auth/login', login)
         .then(response => {
             console.log(response)
           window.localStorage.setItem("token", response.data.token)
+          window.localStorage.setItem("id", response.data.id)
           props.history.push('/home')
         })
         .catch(error => {
@@ -41,19 +43,25 @@ function Login(props) {
 
     return (
 
-      <form onClick={handleSubmit(submitLogin)}>
+      <form onSubmit={handleSubmit(submitLogin)}>
       <label>
         Username:
-        <input type="text" name="username" ref={register({ required: true, minLength:{value: 6, message: "Your Username is too Short!"} })}/>
+        <input type="text"
+        name="username"
+        onChange={handleChanges}
+        ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
       </label>
-    <p>{errors.username && errors.username.message}</p>
+        <p>{errors.username && errors.username.message}</p>
+
       <label>
         Password:
-        <input type="password" name="password" ref={register({ required: true, minLength:{value: 6, message: "Your Password is too Short!"} })}/>
-
+        <input type="password" name="password"
+        onChange={handleChanges}
+        ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
       </label>
-    <p>{errors.password && errors.password.message}</p>
-      <button>Submit</button>
+        <p>{errors.password && errors.password.message}</p>
+        
+      <button type="submit">Login</button>
     </form>
     )
 }
