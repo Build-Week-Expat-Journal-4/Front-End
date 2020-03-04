@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
+import { HomeContext } from "../contexts/HomeContext";
 
 function Home(props) {
-
-    const userid = window.localStorage.getItem("id")
+    //context
+    const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
 
     //stories array
-    const [stories, setStories] = useState([]) 
-
-    const [newStory, setNewStory] = useState({
-        
-        title: "",
-        story: "",
-        img_link: "www.google.com",
-        location:"",
-        user_id: userid,
-        date_pic_taken: "03-03-2020"
-        
-
-    })
+    
 
     const handleChanges = e => {
         setNewStory({
@@ -88,7 +77,7 @@ function Home(props) {
                         <p>{story.location}</p>
                         <p>{story.story}</p>
                         
-                        <img src="https://images.unsplash.com/photo-1562961857-b1ba8f9dbd5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1360&q=80" alt="sbsdf"/>
+                        <img src="https://images.unsplash.com/photo-1562961857-b1ba8f9dbd5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1360&q=80" alt="photo of stuff"/>
                       
 
                     </div>
