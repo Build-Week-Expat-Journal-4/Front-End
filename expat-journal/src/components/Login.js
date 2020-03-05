@@ -28,7 +28,17 @@ function Login(props) {
     //axios call to login
     const submitLogin = e => {
         // e.preventDefault()
-        
+        axios
+        .post('https://expat-journal4.herokuapp.com/api/auth/login', login)
+        .then(response => {
+            console.log(response)
+          window.localStorage.setItem("token", response.data.token)
+          window.localStorage.setItem("id", response.data.id)
+          props.history.push('/home')
+        })
+        .catch(error => {
+          console.log(error)
+        })
         setLogin({
           username: "",
           password: ""
