@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import styled from 'styled-components';
+import React, { useState, useContext, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
 import { HomeContext } from "../contexts/HomeContext";
@@ -7,6 +8,18 @@ function Home(props) {
     //context
     const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
 
+    //stories array
+    
+
+    const Home = styled.h1`
+        color: dodgerblue;
+    `
+
+    const Story1 = styled.h2 `
+        color: red;
+    `
+
+    //gets all current stories
     const handleChanges = e => {
         setNewStory({
             ...newStory,
@@ -51,13 +64,37 @@ function Home(props) {
 
     }
 
+    const HomeContainer = styled.div `
+        background-color: mistyrose;
+    `;
+
+    const StoriesContainer = styled.div `
+        margin-right: 30%;
+        margin-left: 30%;
+    `;
+
+    const StoryImg = styled.img `
+        width: 100%;
+        margin-bottom: -3px;
+    `;
+
+    const StoryCard = styled.div `
+        border: 1px solid dodgerblue;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: white;
+    `;
+
+    const Descrip = styled.label `
+    color: steelblue;
+    font-family: 'Kalam', cursive;
+    `;
 
     return (
-        <div>
+        <HomeContainer>
             <Link to="/profile" userid={userid}>Profile</Link>
             {/* <button onClick={signOut}>Sign Out</button> */}
             {/* main page - photos/stories will be here */}
-            <h1>home page</h1>
 
             <form onSubmit={addStory}>
                     <label>Title</label>
@@ -75,21 +112,22 @@ function Home(props) {
                 <button type="submit">Post</button>
             </form>
 
-            {stories.map(story => {
-                return (
-                    
-                    <div>
-                        <h2>{story.title}</h2>
-                        <p>{story.location}</p>
-                        <p>{story.story}</p>
+            <StoriesContainer>
+                {stories.map(story => {
+                    return (
                         
-                        <img src={story.img_link}/>
-                      
+                        <StoryCard>
 
-                    </div>
-                )
-            })}
-        </div>
+                            <Story1>{story.title}</Story1>
+                            <p>{story.location}</p>
+                            <p>{story.story}</p>
+                            
+                            <StoryImg src={story.img_link}/>
+                        </StoryCard>
+                    )
+                })}
+            </StoriesContainer>
+        </HomeContainer>
     )
 }
 
