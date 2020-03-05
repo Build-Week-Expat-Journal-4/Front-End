@@ -7,9 +7,6 @@ function Home(props) {
     //context
     const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
 
-    //stories array
-    
-
     const handleChanges = e => {
         setNewStory({
             ...newStory,

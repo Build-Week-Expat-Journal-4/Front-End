@@ -1,12 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import { HomeContext } from "../contexts/HomeContext";
 
 
 function Profile() {
     const myuserid = window.localStorage.getItem("id")
-    const postid = window.localStorage.getItem("id")
+
+    const {stories, setStories, newStory, setNewStory, postid} = useContext(HomeContext)
     
     const [myStories, setMyStories] = useState([])
+    const [editing, setEditing] = useState(false)
+
+    const handleEdit = post => {
+        console.log(post)
+        setEditing(true)
+        setNewStory(post)
+    }
 
     // able to view stories you've posted
     useEffect(() => {
@@ -27,21 +36,23 @@ function Profile() {
           .delete(`/stories/${id}`)
           .then(response => {
             console.log("delete successful", response)
-           
+           window.location.reload()
         })
           .catch(error => {
             console.log(error)
         })
+        
       }
 
       //edit
-      const editStory = () => {
+      const editStory = (post) => {
+          post.preventDefault()
+          console.log(post)
           axiosWithAuth()
-          .put(`/stories/${myStories.id}`, myStories)
-          
+          .put(`/stories/${postid}`, newStory)
           .then(response => {
             console.log("edit successful", response)
-            setMyStories(response.data)
+            setNewStory(response.data)
         })
           .catch(error => {
             console.log(error)
@@ -59,11 +70,47 @@ function Profile() {
                     <p>{mystuff.location}</p>
                     <p>{mystuff.story}</p>
                     
-                    <button onClick={editStory}>Edit</button>
+                    <button onClick={() => handleEdit(mystuff.id)}>Edit</button>
                     <button onClick={() => deleteStory(mystuff.id)}>Delete</button>
+
                     </div>
                 )
             })}
+
+            {/* opens edit input boxes when edit button is clicked */}
+            {editing && (
+                    <form onSubmit={editStory}>
+                        <h3>Edit Story</h3>
+                        <label>
+                            Title
+                        <input onChange={e => 
+                        setNewStory({...stories, title:e.target.value})
+                        }
+                        value={myStories.title}
+                        />
+                        </label>
+
+                        <label>
+                            Location
+                        <input onChange={e => 
+                        setNewStory({...stories, location: e.target.value})
+                        }
+                        value={myStories.location}
+                        />
+                        </label>
+
+                        <label>
+                            Story
+                        <input onChange={e => 
+                        setNewStory({...stories, story:e.target.value})
+                        }
+                        value={myStories.story}
+                        />
+                        </label>
+                        <button type="submit">Save</button>
+                        <button onClick={() => setEditing(false)}>cancel</button>
+                    </form>
+                    )} 
         </div>
     )
 }
