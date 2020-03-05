@@ -9,27 +9,25 @@ function Login(props) {
 
   const { register, handleSubmit, errors } = useForm()
 
-
-
     const [login, setLogin] = useState({
         username: '',
         password: '',
         id:""
     })
 
-    const handleChanges = e => {
-        setLogin({
-            ...login,
-            [e.target.name]: e.target.value
-        })
-        console.log(e.target.value)
-    }
+    // const handleChanges = e => {
+    //     setLogin({
+    //         ...login,
+    //         [e.target.name]: e.target.value
+    //     })
+    //     console.log(e.target.value)
+    // }
 
     //axios call to login
-    const submitLogin = e => {
+    const submitLogin = values => {
         // e.preventDefault()
         axios
-        .post('https://expat-journal4.herokuapp.com/api/auth/login', login)
+        .post('https://expat-journal4.herokuapp.com/api/auth/login', values)
         .then(response => {
             console.log(response)
           window.localStorage.setItem("token", response.data.token)
@@ -94,7 +92,6 @@ function Login(props) {
               Username:
               <input type="text"
               name="username"
-              onChange={handleChanges}
               ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
             </UserName>
               <p>{errors.username && errors.username.message}</p>
@@ -102,7 +99,6 @@ function Login(props) {
             <PassWord>
               Password:
               <input type="password" name="password"
-              onChange={handleChanges}
               ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
             </PassWord>
               <p>{errors.password && errors.password.message}</p>

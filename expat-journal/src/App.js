@@ -15,14 +15,16 @@ import {HomeContext} from "./contexts/HomeContext"
 function App() {
 
   const userid = window.localStorage.getItem("id")
+  //all stories array
   const [stories, setStories] = useState([]) 
-
+  
     const [newStory, setNewStory] = useState({
         
         title: "",
         story: "",
-        img_link: "www.google.com",
+        img_link: "",
         location:"",
+        
         user_id: userid,
         date_pic_taken: "03-03-2020"   
 
@@ -54,6 +56,7 @@ function App() {
 
     const Logo = styled.h1 `
       color: steelblue;
+      font-family: 'Indie Flower', cursive;
     `;
 
 

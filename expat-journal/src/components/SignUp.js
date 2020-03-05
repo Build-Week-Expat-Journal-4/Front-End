@@ -16,18 +16,18 @@ function SignUp(props) {
         email: ''
     })
 
-    const handleChanges = e => {
-        setNewUser({
-            ...newUser,
-            [e.target.name]: e.target.value
-        })
-    }
+    // const handleChanges = e => {
+    //     setNewUser({
+    //         ...newUser,
+    // //         [e.target.name]: e.target.value
+    //     })
+    // }
 
     
-    const submitSignUp = e => {
+    const submitSignUp = values => {
         // e.preventDefault()
         axios
-        .post('https://expat-journal4.herokuapp.com/api/auth/register/', newUser)
+        .post('https://expat-journal4.herokuapp.com/api/auth/register/', values)
         .then(response => {
           console.log(response)
           props.history.push('/login')
@@ -93,22 +93,22 @@ function SignUp(props) {
             <Attr>
             <Names>
               First Name:
-              <input type="text" name="first_name" onChange={handleChanges} ref={register({ required: true})}/>
+              <input type="text" name="first_name" ref={register({ required: true})}/>
             </Names>
 
             <Names>
               Last Name:
-              <input type="text" name="last_name" onChange={handleChanges} ref={register({ required: true})}/>
+              <input type="text" name="last_name" ref={register({ required: true})}/>
             </Names>
 
             <Names>
               Username:
-              <input type="text" name="username" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
+              <input type="text" name="username" ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
             </Names>
               <p>{errors.username && errors.username.message}</p>
             <Names>
               Password:
-                <input type="password" name="password" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
+                <input type="password" name="password" ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
 
             </Names>
               <p>{errors.password && errors.password.message}</p>

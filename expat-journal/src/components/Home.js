@@ -27,6 +27,9 @@ function Home(props) {
         })
     }
 
+    const signOut = () => {
+        window.localStorage.removeItem("token");
+      };
     
 
     //gets current stories from all users
@@ -53,6 +56,7 @@ function Home(props) {
         .then(response => {
            console.log(response)
            setNewStory(response.data)
+           window.location.reload()
         })
         .catch(error => {
             console.log (error)
@@ -89,6 +93,7 @@ function Home(props) {
     return (
         <HomeContainer>
             <Link to="/profile" userid={userid}>Profile</Link>
+            {/* <button onClick={signOut}>Sign Out</button> */}
             {/* main page - photos/stories will be here */}
 
             <form onSubmit={addStory}>
@@ -100,6 +105,10 @@ function Home(props) {
 
                     <label>Location</label>
                     <input type="text" name="location" onChange={handleChanges}/>
+
+                    <label>Image Url</label>
+                    <input type="text" name="img_link" onChange={handleChanges}/>
+
                 <button type="submit">Post</button>
             </form>
 
@@ -113,7 +122,7 @@ function Home(props) {
                             <p>{story.location}</p>
                             <p>{story.story}</p>
                             
-                            <StoryImg src="https://images.unsplash.com/photo-1562961857-b1ba8f9dbd5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1360&q=80" alt="photo of stuff"/>
+                            <StoryImg src={story.img_link}/>
                         </StoryCard>
                     )
                 })}
