@@ -81,6 +81,10 @@ function Home(props) {
         background-color: white;
     `;
 
+    const Descrip = styled.label `
+        
+    `;
+
     return (
         <HomeContainer>
             <Link to="/profile" userid={userid}>Profile</Link>

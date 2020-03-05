@@ -46,16 +46,16 @@ function Login(props) {
       }
 
     const BackgroundImage = styled.div`
-      width:100%;
-      height:100vh;
-      background-image: url(${loginpage});
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      padding: 5%;
-      box-sizing: border-box;
+        width:100%;
+        height:100vh;
+        background-image: url(${loginpage});
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 5%;
+        box-sizing: border-box;
       `;
 
       const FormContainer = styled.div `
@@ -65,24 +65,25 @@ function Login(props) {
       `;
 
       const UserName = styled.label `
-        color: mediumblue;
+        color: steelblue;
         font-family: 'Kalam', cursive;
       `;
 
       const PassWord = styled.label `
-        color: mediumblue;
+        color: steelblue;
         font-family: 'Kalam', cursive;
       `;
 
       const Button = styled.button`
         display: inline-block;
-        color: palevioletred;
+        color: steelblue;
         font-size: 1em;
         margin: 1em;
         padding: 0.25em 1em;
-        border: 2px solid palevioletred;
+        border: 2px solid cadetblue;
         border-radius: 3px;
         display: center;
+        font-family: 'Kalam', cursive;
       `;
 
     return (
