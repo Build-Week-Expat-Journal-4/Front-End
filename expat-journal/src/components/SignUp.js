@@ -103,15 +103,24 @@ function SignUp(props) {
 
             <Names>
               Username:
-              <input type="text" name="username" ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
+              <input type="text" name="username"
+              ref={register({ 
+                required: true, 
+              minLength:{
+                value: 5, 
+              message: "Username must be 5 or more characters"
+              } 
+              })
+              }/>
             </Names>
               <p>{errors.username && errors.username.message}</p>
+
             <Names>
               Password:
                 <input type="password" name="password" ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
-
             </Names>
               <p>{errors.password && errors.password.message}</p>
+
             <Names>
               Email:
                 <input type="text" name="email" ref={register({ required: true})}/>
