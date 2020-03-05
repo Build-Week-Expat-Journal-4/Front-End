@@ -14,6 +14,9 @@ function Home(props) {
         })
     }
 
+    const signOut = () => {
+        window.localStorage.removeItem("token");
+      };
     
 
     //gets current stories from all users
@@ -52,6 +55,7 @@ function Home(props) {
     return (
         <div>
             <Link to="/profile" userid={userid}>Profile</Link>
+            {/* <button onClick={signOut}>Sign Out</button> */}
             {/* main page - photos/stories will be here */}
             <h1>home page</h1>
 
@@ -64,6 +68,9 @@ function Home(props) {
 
                     <label>Location</label>
                     <input type="text" name="location" onChange={handleChanges}/>
+
+                    <label>Image</label>
+                    <input type="text" name="img_link" onChange={handleChanges}/>
                 <button type="submit">Post</button>
             </form>
 

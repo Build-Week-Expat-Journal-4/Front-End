@@ -23,6 +23,7 @@ function App() {
         story: "",
         img_link: "www.google.com",
         location:"",
+        
         user_id: userid,
         date_pic_taken: "03-03-2020"   
 
