@@ -47,10 +47,15 @@ function SignUp(props) {
     return (
       
 <<<<<<< HEAD
+<<<<<<< HEAD
         <form onClick={handleSubmit(submitSignUp)}>
 =======
         <form onSubmit={handleSubmit(submitSignUp)}>
 >>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
+=======
+
+        <form onSubmit={handleSubmit(submitSignUp)}>
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
         <label>
           First Name:
           <input type="text" name="first_name" onChange={handleChanges} ref={register({ required: true})}/>
@@ -59,9 +64,12 @@ function SignUp(props) {
         <label>
           Last Name:
 <<<<<<< HEAD
+<<<<<<< HEAD
           <input type="text" name="last_name" ref={register({ required: true})}/>
         </label>
 =======
+=======
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
           <input type="text" name="last_name" onChange={handleChanges} ref={register({ required: true})}/>
           </label>
 
@@ -76,19 +84,11 @@ function SignUp(props) {
 
       </label>
         <p>{errors.password && errors.password.message}</p>
+<<<<<<< HEAD
 >>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
+=======
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
 
-        <label>
-          Username:
-           <input type="text" name="username" ref={register({ required: true, minLength:{value: 6, message: "Your Username is too Short!"} })}/>
-        </label>
-            <p>{errors.username && errors.username.message}</p>
-        <label>
-          Password:
-            <input type="password" name="password" ref={register({ required: true, minLength:{value: 6, message: "Your Password is too Short!"} })}/>
-        </label>
-            <p>{errors.password && errors.password.message}</p>
-        <label>
           Email:
           <input type="text" name="email" ref={register({ required: true})}/>
         </label>

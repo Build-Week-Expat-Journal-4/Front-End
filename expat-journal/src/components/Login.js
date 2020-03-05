@@ -49,6 +49,7 @@ function Login(props) {
       <label>
         Username:
 <<<<<<< HEAD
+<<<<<<< HEAD
           <input type="text" name="username" onChange={handleChanges} ref={register({ required: true, minLength:{value: 5, message: "Your Username is too Short!"} })}/>
       </label>
       <p>{errors.username && errors.username.message}</p>
@@ -60,6 +61,8 @@ function Login(props) {
       <p>{errors.password && errors.password.message}</p>
       <button>Submit</button>
 =======
+=======
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
         <input type="text"
         name="username"
         onChange={handleChanges}
@@ -76,7 +79,11 @@ function Login(props) {
         <p>{errors.password && errors.password.message}</p>
         
       <button type="submit">Login</button>
+<<<<<<< HEAD
 >>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
+=======
+
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
     </form>
     )
 }

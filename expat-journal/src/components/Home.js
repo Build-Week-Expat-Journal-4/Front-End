@@ -1,9 +1,14 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 =======
 import React, { useContext, useEffect } from "react";
 >>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
+=======
+import styled from 'styled-components';
+import React, { useContext, useEffect } from "react";
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
 import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
 import { HomeContext } from "../contexts/HomeContext";
@@ -16,6 +21,10 @@ function Home(props) {
     
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
     const Home = styled.h1`
         color: dodgerblue;
         border: 3px inset teal;
@@ -26,7 +35,11 @@ function Home(props) {
     `
 
     //gets all current stories
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
     const handleChanges = e => {
         setNewStory({
             ...newStory,
@@ -37,7 +50,11 @@ function Home(props) {
     
 
     //gets current stories from all users
+<<<<<<< HEAD
 >>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
+=======
+
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
     useEffect(() => {
         axiosWithAuth()
         .get('/stories/', stories)
@@ -74,9 +91,14 @@ function Home(props) {
             <Link to="/profile" userid={userid}>Profile</Link>
             {/* main page - photos/stories will be here */}
 <<<<<<< HEAD
+<<<<<<< HEAD
             <Home>Home Page</Home>
 =======
             <h1>home page</h1>
+=======
+
+            <Home>Home Page</Home>
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
 
             <form onSubmit={addStory}>
                     <label>Title</label>
@@ -90,17 +112,26 @@ function Home(props) {
                 <button type="submit">Post</button>
             </form>
 
+<<<<<<< HEAD
 >>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
+=======
+
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
             {stories.map(story => {
                 return (
                     
                     <div>
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <Story1>{story.title}</Story1>
                         <p>{story.story}</p>
 =======
                         <h2>{story.title}</h2>
 >>>>>>> dc9683cbdf726c072591d458f52fec9d3bd7355b
+=======
+
+                        <Story1>{story.title}</Story1>
+>>>>>>> c6cab8080ab740a6b17e19b0ba092b1395007813
                         <p>{story.location}</p>
                         <p>{story.story}</p>
                         
