@@ -46,7 +46,6 @@ function SignUp(props) {
 
     return (
       
-
         <form onSubmit={handleSubmit(submitSignUp)}>
         <label>
           First Name:

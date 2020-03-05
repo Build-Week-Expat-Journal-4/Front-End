@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React, { useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
 import { HomeContext } from "../contexts/HomeContext";
@@ -11,7 +11,6 @@ function Home(props) {
     //stories array
     
 
-
     const Home = styled.h1`
         color: dodgerblue;
     `
@@ -21,7 +20,6 @@ function Home(props) {
     `
 
     //gets all current stories
-
     const handleChanges = e => {
         setNewStory({
             ...newStory,
@@ -32,7 +30,6 @@ function Home(props) {
     
 
     //gets current stories from all users
-
     useEffect(() => {
         axiosWithAuth()
         .get('/stories/', stories)
@@ -89,7 +86,6 @@ function Home(props) {
             <Link to="/profile" userid={userid}>Profile</Link>
             {/* main page - photos/stories will be here */}
 
-
             <form onSubmit={addStory}>
                     <label>Title</label>
                     <input type="text" name="title" onChange={handleChanges}/>
@@ -113,8 +109,6 @@ function Home(props) {
                             <p>{story.story}</p>
                             
                             <StoryImg src="https://images.unsplash.com/photo-1562961857-b1ba8f9dbd5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1360&q=80" alt="photo of stuff"/>
-                        
-
                         </StoryCard>
                     )
                 })}

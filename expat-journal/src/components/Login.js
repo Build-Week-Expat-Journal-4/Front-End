@@ -66,30 +66,27 @@ function Login(props) {
     return (
       <BackgroundImage>
         <FormContainer>
+          <form onSubmit={handleSubmit(submitLogin)}>
+            <label>
+              Username:
+              <input type="text"
+              name="username"
+              onChange={handleChanges}
+              ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
+            </label>
+              <p>{errors.username && errors.username.message}</p>
 
-
-      <form onSubmit={handleSubmit(submitLogin)}>
-      <label>
-        Username:
-        <input type="text"
-        name="username"
-        onChange={handleChanges}
-        ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
-      </label>
-        <p>{errors.username && errors.username.message}</p>
-
-      <label>
-        Password:
-        <input type="password" name="password"
-        onChange={handleChanges}
-        ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
-      </label>
-        <p>{errors.password && errors.password.message}</p>
-        
-      <button type="submit">Login</button>
-
-    </form>
-    </FormContainer>
+            <label>
+              Password:
+              <input type="password" name="password"
+              onChange={handleChanges}
+              ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
+            </label>
+              <p>{errors.password && errors.password.message}</p>
+              
+            <button type="submit">Login</button>
+        </form>
+      </FormContainer>
     </BackgroundImage>
     )
 }
