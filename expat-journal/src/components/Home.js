@@ -1,23 +1,54 @@
 import styled from 'styled-components';
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
 import { HomeContext } from "../contexts/HomeContext";
+
+//styled components
+const Story1 = styled.h2 `
+color: red;
+`
+
+const HomeContainer = styled.div `
+        background-color: mistyrose;
+    `;
+
+    const StoriesContainer = styled.div `
+        margin-right: 30%;
+        margin-left: 30%;
+    `;
+
+    const StoryImg = styled.img `
+        width: 100%;
+        margin-bottom: -3px;
+    `;
+
+    const StoryCard = styled.div `
+        border: 1px solid dodgerblue;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: white;
+    `;
+
+    const Descrip = styled.label `
+    color: steelblue;
+    font-family: 'Kalam', cursive;
+    `;
+
+    const MenuLink = styled(Link) `
+    text-decoration: none;
+    color: steelblue;
+    font-weight: bold;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.5rem;
+    `;
+
+
 
 function Home(props) {
     //context
     const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
 
-    //stories array
-    
-
-    const Home = styled.h1`
-        color: dodgerblue;
-    `
-
-    const Story1 = styled.h2 `
-        color: red;
-    `
 
     //gets all current stories
     const handleChanges = e => {
@@ -47,7 +78,7 @@ function Home(props) {
       }, [])
 
       //adds new stories
-      const addStory = e => {
+      const addStory = (e) => {
         e.preventDefault()
         console.log(newStory)
         
@@ -64,35 +95,13 @@ function Home(props) {
 
     }
 
-    const HomeContainer = styled.div `
-        background-color: mistyrose;
-    `;
-
-    const StoriesContainer = styled.div `
-        margin-right: 30%;
-        margin-left: 30%;
-    `;
-
-    const StoryImg = styled.img `
-        width: 100%;
-        margin-bottom: -3px;
-    `;
-
-    const StoryCard = styled.div `
-        border: 1px solid dodgerblue;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        background-color: white;
-    `;
-
-    const Descrip = styled.label `
-    color: steelblue;
-    font-family: 'Kalam', cursive;
-    `;
+    
 
     return (
-        <HomeContainer>
-            <Link to="/profile" userid={userid}>Profile</Link>
+        <HomeContainer id="tophome">
+            <MenuLink to="/profile" userid={userid}>Your Profile</MenuLink>
+            <br></br>
+            <MenuLink onClick={signOut} userid={userid}>Sign Out</MenuLink>
             {/* <button onClick={signOut}>Sign Out</button> */}
             {/* main page - photos/stories will be here */}
 
@@ -126,6 +135,7 @@ function Home(props) {
                         </StoryCard>
                     )
                 })}
+                <a href="#tophome">Back To Top</a>
             </StoriesContainer>
         </HomeContainer>
     )

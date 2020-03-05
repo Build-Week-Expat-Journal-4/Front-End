@@ -113,7 +113,7 @@ function Profile() {
                         />
                         </label>
                         <button type="submit">Save</button>
-                        <button onClick={() => setEditing(false)}>cancel</button>
+                        <button onClick={() => setEditing(false)}>Cancel</button>
                     </form>
                     )} 
         </div>
