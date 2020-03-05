@@ -59,7 +59,7 @@ function Home(props) {
         })
 
     }
-    
+
     const HomeContainer = styled.div `
         background-color: mistyrose;
     `;
@@ -82,7 +82,8 @@ function Home(props) {
     `;
 
     const Descrip = styled.label `
-        
+    color: steelblue;
+    font-family: 'Kalam', cursive;
     `;
 
     return (
