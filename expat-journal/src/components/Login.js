@@ -63,28 +63,49 @@ function Login(props) {
         border-radius: 1rem;
       `;
 
+      const UserName = styled.label `
+        color: mediumblue;
+        font-family: 'Kalam', cursive;
+      `;
+
+      const PassWord = styled.label `
+        color: mediumblue;
+        font-family: 'Kalam', cursive;
+      `;
+
+      const Button = styled.button`
+        display: inline-block;
+        color: palevioletred;
+        font-size: 1em;
+        margin: 1em;
+        padding: 0.25em 1em;
+        border: 2px solid palevioletred;
+        border-radius: 3px;
+        display: center;
+      `;
+
     return (
       <BackgroundImage>
         <FormContainer>
           <form onSubmit={handleSubmit(submitLogin)}>
-            <label>
+            <UserName>
               Username:
               <input type="text"
               name="username"
               onChange={handleChanges}
               ref={register({ required: true, minLength:{value: 5, message: "Username must be 5 or more characters"} })}/>
-            </label>
+            </UserName>
               <p>{errors.username && errors.username.message}</p>
 
-            <label>
+            <PassWord>
               Password:
               <input type="password" name="password"
               onChange={handleChanges}
               ref={register({ required: true, minLength:{value: 5, message: "Password must be 5 or more characters"} })}/>
-            </label>
+            </PassWord>
               <p>{errors.password && errors.password.message}</p>
               
-            <button type="submit">Login</button>
+            <Button type="submit">Login</Button>
         </form>
       </FormContainer>
     </BackgroundImage>

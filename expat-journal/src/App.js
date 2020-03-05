@@ -63,7 +63,7 @@ function App() {
       <HomeContext.Provider value={{stories, setStories, newStory, setNewStory, userid}}>
       <TopBar>
         <div>
-          <Logo>Expat Journal</Logo>
+          <Logo>Capture</Logo>
         </div>
         
         <MenuDiv>
