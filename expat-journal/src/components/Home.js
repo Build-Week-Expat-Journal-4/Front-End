@@ -1,22 +1,11 @@
-import styled from 'styled-components';
 import React, { useContext, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
 import { HomeContext } from "../contexts/HomeContext";
 
-const Home = styled.h1`
-        color: dodgerblue;
-        border: 3px inset teal;
-    `
-
-    const Story1 = styled.h2 `
-        color: red;
-    `
-
 function Home(props) {
     //context
     const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
-
 
     const handleChanges = e => {
         setNewStory({
@@ -25,10 +14,12 @@ function Home(props) {
         })
     }
 
+    const signOut = () => {
+        window.localStorage.removeItem("token");
+      };
     
 
     //gets current stories from all users
-
     useEffect(() => {
         axiosWithAuth()
         .get('/stories/', stories)
@@ -52,6 +43,7 @@ function Home(props) {
         .then(response => {
            console.log(response)
            setNewStory(response.data)
+           window.location.reload()
         })
         .catch(error => {
             console.log (error)
@@ -63,9 +55,9 @@ function Home(props) {
     return (
         <div>
             <Link to="/profile" userid={userid}>Profile</Link>
+            {/* <button onClick={signOut}>Sign Out</button> */}
             {/* main page - photos/stories will be here */}
-
-            <Home>Home Page</Home>
+            <h1>home page</h1>
 
             <form onSubmit={addStory}>
                     <label>Title</label>
@@ -76,20 +68,22 @@ function Home(props) {
 
                     <label>Location</label>
                     <input type="text" name="location" onChange={handleChanges}/>
+
+                    <label>Image Url</label>
+                    <input type="text" name="img_link" onChange={handleChanges}/>
+
                 <button type="submit">Post</button>
             </form>
-
 
             {stories.map(story => {
                 return (
                     
                     <div>
-
-                        <Story1>{story.title}</Story1>
+                        <h2>{story.title}</h2>
                         <p>{story.location}</p>
                         <p>{story.story}</p>
                         
-                        <img src="https://images.unsplash.com/photo-1562961857-b1ba8f9dbd5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1360&q=80" alt="photo of stuff"/>
+                        <img src={story.img_link}/>
                       
 
                     </div>

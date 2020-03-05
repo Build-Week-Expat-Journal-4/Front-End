@@ -46,7 +46,6 @@ function SignUp(props) {
 
     return (
       
-
         <form onSubmit={handleSubmit(submitSignUp)}>
         <label>
           First Name:
@@ -70,6 +69,7 @@ function SignUp(props) {
       </label>
         <p>{errors.password && errors.password.message}</p>
 
+        <label>
           Email:
           <input type="text" name="email" ref={register({ required: true})}/>
         </label>

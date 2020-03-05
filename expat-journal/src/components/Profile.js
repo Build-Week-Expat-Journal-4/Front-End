@@ -11,10 +11,12 @@ function Profile() {
     const [myStories, setMyStories] = useState([])
     const [editing, setEditing] = useState(false)
 
-    const handleEdit = post => {
-        console.log(post)
+
+
+    const handleEdit = (mystuff) => {
+        console.log(mystuff)
         setEditing(true)
-        setNewStory(post)
+        setNewStory(mystuff)
     }
 
     // able to view stories you've posted
@@ -45,14 +47,15 @@ function Profile() {
       }
 
       //edit
-      const editStory = (post) => {
-          post.preventDefault()
-          console.log(post)
+      const editStory = (e) => {
+          e.preventDefault()
+          console.log(newStory)
           axiosWithAuth()
-          .put(`/stories/${postid}`, newStory)
+          .put(`/stories/${newStory.id}`, newStory)
           .then(response => {
             console.log("edit successful", response)
             setNewStory(response.data)
+            setEditing(false)
         })
           .catch(error => {
             console.log(error)
@@ -69,8 +72,9 @@ function Profile() {
                     <h2>{mystuff.title}</h2>
                     <p>{mystuff.location}</p>
                     <p>{mystuff.story}</p>
+                    <img src={mystuff.img_link}/>
                     
-                    <button onClick={() => handleEdit(mystuff.id)}>Edit</button>
+                    <button onClick={() => handleEdit(mystuff)}>Edit</button>
                     <button onClick={() => deleteStory(mystuff.id)}>Delete</button>
 
                     </div>
@@ -78,33 +82,34 @@ function Profile() {
             })}
 
             {/* opens edit input boxes when edit button is clicked */}
+            {console.log(newStory)}
             {editing && (
                     <form onSubmit={editStory}>
                         <h3>Edit Story</h3>
                         <label>
                             Title
                         <input onChange={e => 
-                        setNewStory({...stories, title:e.target.value})
+                        setNewStory({...newStory, title:e.target.value})
                         }
-                        value={myStories.title}
+                        value={newStory.title}
                         />
                         </label>
 
                         <label>
                             Location
                         <input onChange={e => 
-                        setNewStory({...stories, location: e.target.value})
+                        setNewStory({...newStory, location: e.target.value})
                         }
-                        value={myStories.location}
+                        value={newStory.location}
                         />
                         </label>
 
                         <label>
                             Story
                         <input onChange={e => 
-                        setNewStory({...stories, story:e.target.value})
+                        setNewStory({...newStory, story:e.target.value})
                         }
-                        value={myStories.story}
+                        value={newStory.story}
                         />
                         </label>
                         <button type="submit">Save</button>
