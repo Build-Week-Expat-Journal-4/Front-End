@@ -1,11 +1,22 @@
+import styled from 'styled-components';
 import React, { useContext, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
 import { HomeContext } from "../contexts/HomeContext";
 
+const Home = styled.h1`
+        color: dodgerblue;
+        border: 3px inset teal;
+    `
+
+    const Story1 = styled.h2 `
+        color: red;
+    `
+
 function Home(props) {
     //context
     const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
+
 
     const handleChanges = e => {
         setNewStory({
@@ -17,6 +28,7 @@ function Home(props) {
     
 
     //gets current stories from all users
+
     useEffect(() => {
         axiosWithAuth()
         .get('/stories/', stories)
@@ -52,7 +64,8 @@ function Home(props) {
         <div>
             <Link to="/profile" userid={userid}>Profile</Link>
             {/* main page - photos/stories will be here */}
-            <h1>home page</h1>
+
+            <Home>Home Page</Home>
 
             <form onSubmit={addStory}>
                     <label>Title</label>
@@ -66,11 +79,13 @@ function Home(props) {
                 <button type="submit">Post</button>
             </form>
 
+
             {stories.map(story => {
                 return (
                     
                     <div>
-                        <h2>{story.title}</h2>
+
+                        <Story1>{story.title}</Story1>
                         <p>{story.location}</p>
                         <p>{story.story}</p>
                         
