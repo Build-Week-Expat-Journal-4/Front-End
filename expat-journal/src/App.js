@@ -21,7 +21,7 @@ function App() {
         
         title: "",
         story: "",
-        img_link: "www.google.com",
+        img_link: "",
         location:"",
         
         user_id: userid,

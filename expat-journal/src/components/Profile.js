@@ -72,6 +72,7 @@ function Profile() {
                     <h2>{mystuff.title}</h2>
                     <p>{mystuff.location}</p>
                     <p>{mystuff.story}</p>
+                    <img src={mystuff.img_link}/>
                     
                     <button onClick={() => handleEdit(mystuff)}>Edit</button>
                     <button onClick={() => deleteStory(mystuff.id)}>Delete</button>
