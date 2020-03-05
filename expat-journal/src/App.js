@@ -14,14 +14,12 @@ import {HomeContext} from "./contexts/HomeContext"
 function App() {
 
   const userid = window.localStorage.getItem("id")
-  //all stories array
   const [stories, setStories] = useState([]) 
-  
+
     const [newStory, setNewStory] = useState({
         
         title: "",
         story: "",
-        id:"",
         img_link: "www.google.com",
         location:"",
         user_id: userid,
