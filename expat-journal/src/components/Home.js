@@ -4,7 +4,15 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import {Link} from "react-router-dom"
 import { HomeContext } from "../contexts/HomeContext";
 
-const Home = styled.h1`
+function Home(props) {
+    //context
+    const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
+
+    //stories array
+    
+
+
+    const Home = styled.h1`
         color: dodgerblue;
         border: 3px inset teal;
     `
@@ -13,10 +21,7 @@ const Home = styled.h1`
         color: red;
     `
 
-function Home(props) {
-    //context
-    const {stories, setStories, newStory, setNewStory, userid} = useContext(HomeContext)
-
+    //gets all current stories
 
     const handleChanges = e => {
         setNewStory({
