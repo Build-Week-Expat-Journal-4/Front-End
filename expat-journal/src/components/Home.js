@@ -14,7 +14,6 @@ function Home(props) {
 
     const Home = styled.h1`
         color: dodgerblue;
-        border: 3px inset teal;
     `
 
     const Story1 = styled.h2 `
@@ -63,14 +62,33 @@ function Home(props) {
         })
 
     }
+    
+    const HomeContainer = styled.div `
+        background-color: mistyrose;
+    `;
 
+    const StoriesContainer = styled.div `
+        margin-right: 30%;
+        margin-left: 30%;
+    `;
+
+    const StoryImg = styled.img `
+        width: 100%;
+        margin-bottom: -3px;
+    `;
+
+    const StoryCard = styled.div `
+        border: 1px solid dodgerblue;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: white;
+    `;
 
     return (
-        <div>
+        <HomeContainer>
             <Link to="/profile" userid={userid}>Profile</Link>
             {/* main page - photos/stories will be here */}
 
-            <Home>Home Page</Home>
 
             <form onSubmit={addStory}>
                     <label>Title</label>
@@ -84,23 +102,24 @@ function Home(props) {
                 <button type="submit">Post</button>
             </form>
 
-
-            {stories.map(story => {
-                return (
-                    
-                    <div>
-
-                        <Story1>{story.title}</Story1>
-                        <p>{story.location}</p>
-                        <p>{story.story}</p>
+            <StoriesContainer>
+                {stories.map(story => {
+                    return (
                         
-                        <img src="https://images.unsplash.com/photo-1562961857-b1ba8f9dbd5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1360&q=80" alt="photo of stuff"/>
-                      
+                        <StoryCard>
 
-                    </div>
-                )
-            })}
-        </div>
+                            <Story1>{story.title}</Story1>
+                            <p>{story.location}</p>
+                            <p>{story.story}</p>
+                            
+                            <StoryImg src="https://images.unsplash.com/photo-1562961857-b1ba8f9dbd5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1360&q=80" alt="photo of stuff"/>
+                        
+
+                        </StoryCard>
+                    )
+                })}
+            </StoriesContainer>
+        </HomeContainer>
     )
 }
 

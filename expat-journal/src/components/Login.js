@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
 import axios from "axios"
+import loginpage from "../images/loginpage.jpeg"
 
 
 function Login(props) {
@@ -43,7 +44,29 @@ function Login(props) {
         })
       }
 
+    const BackgroundImage = styled.div`
+      width:100%;
+      height:100vh;
+      background-image: url(${loginpage});
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 5%;
+      box-sizing: border-box;
+      `;
+
+      const FormContainer = styled.div `
+        background-color: rgba(65, 105, 225, 0.3);
+        padding: 40px;
+        border-radius: 1rem;
+      `;
+
     return (
+      <BackgroundImage>
+        <FormContainer>
+
 
       <form onSubmit={handleSubmit(submitLogin)}>
       <label>
@@ -66,6 +89,8 @@ function Login(props) {
       <button type="submit">Login</button>
 
     </form>
+    </FormContainer>
+    </BackgroundImage>
     )
 }
 
