@@ -40,6 +40,7 @@ function Home(props) {
         .then(response => {
            console.log(response)
            setNewStory(response.data)
+           window.location.reload()
         })
         .catch(error => {
             console.log (error)
