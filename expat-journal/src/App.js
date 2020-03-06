@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-import './App.css';
-import styled from 'styled-components';
+import React, {useState} from 'react'
+import './App.css'
+import styled from 'styled-components'
 
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
-import Profile from "./components/Profile"
+import Profile from './components/Profile'
+import Qod from './components/Qod'
 
 import {Route, Switch, Link} from 'react-router-dom'
 import {PrivateRoute} from './components/PrivateRoute'
@@ -42,7 +43,7 @@ function App() {
     const MenuDiv = styled.div `
       display: flex;
       align-items: center;
-      flex-basis: 20%;
+      flex-basis: 40%;
       justify-content: space-between;
     `;
 
@@ -73,6 +74,7 @@ function App() {
           <MenuLink to="/home">Home</MenuLink>
           <MenuLink to="/login">Login</MenuLink>
           <MenuLink to="/">Sign Up</MenuLink>
+          <MenuLink to="/qod">Quote of the Day</MenuLink>
         </MenuDiv>
       </TopBar>
         
@@ -81,6 +83,7 @@ function App() {
             <Route exact path = "/" component={SignUp}/>
             <PrivateRoute exact path="/home" component={Home}/>
             <PrivateRoute exact path="/profile" component={Profile}/>
+            <Route exact path="/qod" component={Qod}/>
           </Switch>
       </HomeContext.Provider>
     </div>
