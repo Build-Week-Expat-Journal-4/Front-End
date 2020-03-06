@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { HomeContext } from "../contexts/HomeContext";
+import styled from 'styled-components';
 
 
 function Profile() {
@@ -61,21 +62,68 @@ function Profile() {
             console.log(error)
         })
       }
-    
+
+      const All = styled.div `
+          background-color: lavenderblush;
+      `;
+
+      const Profile = styled.h1 `
+          color: royalblue;
+          font-family: 'Indie Flower', cursive;
+      `;
+
+      const Location = styled.p `
+        color: dodgerblue;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        font-size: 1.45rem;
+    `;
+
+      const Descrip = styled.p `
+        color: dodgerblue;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+      `;
+
+      const Img = styled.img `
+        width:100%;
+        height:100vh;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 5%;
+        box-sizing: border-box;
+        border-radius: 100px;
+      `;
+
+      const Button = styled.button `
+        display: inline-block;
+        color: royalblue;
+        font-size: 1em;
+        font-weight:bold;
+        margin: 1em;
+        padding: 0.25em 1em;
+        border: 2px solid deepskyblue;
+        border-radius: 3px;
+        display: center;
+        font-family: 'Kalam', cursive;
+      `;
 
     return (
-        <div>
-            <h1>Profile</h1>
+        <All>
+            <Profile>My Trips!</Profile>
             {myStories.map (mystuff => {
                 return (
                     <div value={mystuff.id}>
-                    <h2>{mystuff.title}</h2>
-                    <p>{mystuff.location}</p>
-                    <p>{mystuff.story}</p>
-                    <img src={mystuff.img_link}/>
+                    <Location>{mystuff.title}</Location>
+                    <Location>{mystuff.location}</Location>
+                    <Descrip>{mystuff.story}</Descrip>
+                    <Img src={mystuff.img_link}/>
                     
-                    <button onClick={() => handleEdit(mystuff)}>Edit</button>
-                    <button onClick={() => deleteStory(mystuff.id)}>Delete</button>
+                    <Button onClick={() => handleEdit(mystuff)}>Edit</Button>
+                    <Button onClick={() => deleteStory(mystuff.id)}>Delete</Button>
 
                     </div>
                 )
@@ -116,7 +164,7 @@ function Profile() {
                         <button onClick={() => setEditing(false)}>cancel</button>
                     </form>
                     )} 
-        </div>
+        </All>
     )
 }
 
