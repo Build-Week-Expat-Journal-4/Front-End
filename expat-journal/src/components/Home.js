@@ -6,11 +6,11 @@ import { HomeContext } from "../contexts/HomeContext";
 
 //styled components
 const Story1 = styled.h2 `
-color: red;
+color: black;
 `
 
 const HomeContainer = styled.div `
-        background-color: mistyrose;
+        background-color: #f1f3f4;
     `;
 
     const StoriesContainer = styled.div `
@@ -24,10 +24,12 @@ const HomeContainer = styled.div `
     `;
 
     const StoryCard = styled.div `
-        border: 1px solid dodgerblue;
+        border: 1px solid black;
+        border-radius:14px;
         margin-top: 10px;
         margin-bottom: 10px;
         background-color: white;
+        padding:20px;
     `;
 
     const Descrip = styled.label `
@@ -39,8 +41,17 @@ const HomeContainer = styled.div `
     text-decoration: none;
     color: steelblue;
     font-weight: bold;
-    font-family: 'Indie Flower', cursive;
-    font-size: 1.5rem;
+    /* font-family: 'Indie Flower', cursive; */
+    font-size: 1rem;
+    margin:20px;
+    border:1px solid black;
+    border-radius:3px;
+    padding:6px 5px;
+
+    &:hover{
+        color:rgb(33, 102, 134);
+        transition:all .25s ease-in
+    }
     `;
 
 
@@ -99,18 +110,19 @@ function Home(props) {
 
     return (
         <HomeContainer id="tophome">
-            <MenuLink to="/profile" userid={userid}>Your Profile</MenuLink>
-            <br></br>
+            
+            <div classname="homenav">
+                <br></br>
+            <MenuLink to="/profile" userid={userid}>Profile</MenuLink>
             <MenuLink onClick={signOut} userid={userid}>Sign Out</MenuLink>
-            {/* <button onClick={signOut}>Sign Out</button> */}
-            {/* main page - photos/stories will be here */}
-
-            <form onSubmit={addStory}>
+            </div>
+           
+            <form className="storyform" onSubmit={addStory}>
                     <label>Title</label>
                     <input type="text" name="title" onChange={handleChanges}/>
 
                     <label>Story</label>
-                    <input type="text" name="story" onChange={handleChanges}/>
+                    <textarea type="text" name="story" rows="6" cols="50" onChange={handleChanges}/>
 
                     <label>Location</label>
                     <input type="text" name="location" onChange={handleChanges}/>
@@ -128,7 +140,8 @@ function Home(props) {
                         <StoryCard>
 
                             <Story1>{story.title}</Story1>
-                            <p>{story.location}</p>
+                            <p className="location">{story.location}</p>
+                            <p>By: {story.first_name} {story.last_name}</p>
                             <p>{story.story}</p>
                             
                             <StoryImg src={story.img_link}/>

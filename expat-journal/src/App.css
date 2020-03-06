@@ -3,3 +3,147 @@
 }
 
 
+.storyform{
+  display:flex;
+  flex-direction: column;
+  width:250px;
+  margin:40px auto;
+}
+
+.storyform button{
+  width:60px;
+  margin:10px auto;
+}
+
+.storyform textarea{
+  height: 150px;
+  line-height: 100%;
+  resize:vertical;
+  border-radius: 3px;
+  line-height: 18px;
+  outline:none;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+}
+
+.storyform input{
+  line-height: 100%;
+  resize:vertical;
+  border-radius: 3px;
+  line-height: 18px;
+  outline:none;
+  border: 1px solid black;
+  transition: all 0.3s;
+  padding: 2px 13px;
+  margin-bottom: 10px;
+  width:100%;
+  box-sizing: border-box;
+}
+
+.editform{
+  /* width:400px;
+  margin:0 auto; */
+  position: fixed;
+top: 100px;
+right: 82%;
+background: rgb(33, 102, 134);
+height: 100px;
+width: 200px;
+}
+
+.editform button{
+  margin:5px 10px;
+  /* width:20%; */
+}
+
+/* width: 200px;
+margin: 0 auto;
+position: absolute;
+right: 820px;
+top: 500px; */
+
+.editform input{
+  line-height: 100%;
+  resize:vertical;
+  border-radius: 3px;
+  line-height: 18px;
+  outline:none;
+  border: 1px solid black;
+  transition: all 0.3s;
+  padding: 2px 13px;
+  margin-bottom: 10px;
+  width:100%;
+  box-sizing: border-box;
+}
+.editform textarea{
+  height: 150px;
+  line-height: 100%;
+  resize:vertical;
+  border-radius: 3px;
+  line-height: 18px;
+  outline:none;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+}
+
+button{
+ background:rgb(75, 75, 75);
+ border:none;
+ padding:8px 13px;
+ border-radius:7px;
+ color: white;
+ font-weight:500;
+ font-size:14px;
+}
+
+button:hover{
+  background:rgb(33, 102, 134);
+  transition: all .25s ease-in;
+  cursor: pointer;
+}
+
+.postsdiv{
+  width:50%;
+  margin:0 auto;
+  
+}
+
+.pagediv{
+  background:#f1f3f4;
+  margin:0;
+}
+
+.myposts{
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border:2px solid black;
+  border-radius: 14px;
+  margin:20px;
+  padding:20px;
+}
+
+.myposts img{
+  width:60%;
+  margin-bottom:10px;
+}
+
+.myposts button{
+  width:80px;
+  margin:5px;
+}
+
+.location{
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom:1px solid black;
+  padding-bottom:15px;
+}

@@ -12,26 +12,8 @@ import {PrivateRoute} from './components/PrivateRoute'
 
 import {HomeContext} from "./contexts/HomeContext"
 
-function App() {
-
-  const userid = window.localStorage.getItem("id")
-  //all stories array
-  const [stories, setStories] = useState([]) 
-  
-    const [newStory, setNewStory] = useState({
-        
-        title: "",
-        story: "",
-        img_link: "",
-        location:"",
-        
-        user_id: userid,
-        date_pic_taken: "03-03-2020"   
-
-    })
-    
-    const TopBar = styled.div `
-      background-color: seashell;
+const TopBar = styled.div `
+      background-color: white;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
@@ -52,6 +34,11 @@ function App() {
       font-weight: bold;
       font-family: 'Indie Flower', cursive;
       font-size: 1.5rem;
+
+      &:hover{
+        color:rgb(33, 102, 134);
+        transition:all .25s ease-in
+    }
     `;
 
     const Logo = styled.h1 `
@@ -59,11 +46,39 @@ function App() {
       font-family: 'Indie Flower', cursive;
     `;
 
+function App() {
+
+  const userid = window.localStorage.getItem("id")
+  //all stories array
+  const [stories, setStories] = useState([]) 
+  
+    const [newStory, setNewStory] = useState({
+        
+        title: "",
+        story: "",
+        img_link: "",
+        location:"",
+        
+        user_id: userid,
+        date_pic_taken: "03-03-2020"   
+
+    })
+
+    //sign up state
+    const [newUser, setNewUser] = useState({
+      first_name: '',
+      last_name: '',
+      username:'',
+      password:'',
+      email: ''
+  })
+    
+
 
   return (
     <div className="App">
       
-      <HomeContext.Provider value={{stories, setStories, newStory, setNewStory, userid}}>
+      <HomeContext.Provider value={{stories, setStories, newStory, setNewStory, userid, newUser, setNewUser}}>
       <TopBar>
         <div>
           <Logo>Capture</Logo>
