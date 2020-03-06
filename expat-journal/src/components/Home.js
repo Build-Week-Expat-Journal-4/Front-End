@@ -13,11 +13,21 @@ function Home(props) {
 
     const Home = styled.h1`
         color: dodgerblue;
-    `
+    `;
 
     const Story1 = styled.h2 `
-        color: red;
-    `
+        color: mediumturquoise;
+        font-family: 'Indie Flower', cursive;
+        font-size: 2.7rem;
+    `;
+
+    const Title = styled.label `
+        color: royalblue;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        font-size: 1.5rem;
+
+    `;
 
     //gets all current stories
     const handleChanges = e => {
@@ -66,11 +76,12 @@ function Home(props) {
 
     const HomeContainer = styled.div `
         background-color: mistyrose;
+        display: flex;
     `;
 
     const StoriesContainer = styled.div `
         margin-right: 30%;
-        margin-left: 30%;
+        margin-left: 20%;
     `;
 
     const StoryImg = styled.img `
@@ -86,31 +97,66 @@ function Home(props) {
     `;
 
     const Descrip = styled.label `
-    color: steelblue;
-    font-family: 'Kalam', cursive;
+        color: steelblue;
+        font-family: 'Kalam', cursive;
     `;
+    
+    const FormContainer = styled.div `
+        margin-left: 5%;
+    `;
+
+    const Form = styled.form `
+        display: flex;
+        flex-direction: column;
+    `;
+
+    const Button = styled.button`
+        display: inline-block;
+        color: steelblue;
+        font-size: 1em;
+        margin: 1em;
+        padding: 0.25em 1em;
+        border: 2px solid cadetblue;
+        border-radius: 3px;
+        display: center;
+        font-family: 'Kalam', cursive;
+        transition-duration: 0.4s;
+    `;
+
+    const Location = styled.p `
+        color: dodgerblue;
+        font-weight: bold;
+        font-family: 'Indie Flower', cursive;
+        font-size: 1.45rem;
+    `;
+
+    const Story = styled.p `
+        font-family: 'Montserrat', sans-serif;
+    `;
+
 
     return (
         <HomeContainer>
-            <Link to="/profile" userid={userid}>Profile</Link>
+            {/*<Link to="/profile" userid={userid}>Profile</Link>*/}
             {/* <button onClick={signOut}>Sign Out</button> */}
             {/* main page - photos/stories will be here */}
+            <FormContainer>
+                <Form onSubmit={addStory}>
+                        <Title>Title</Title>
+                        <input type="text" name="title" onChange={handleChanges}/>
 
-            <form onSubmit={addStory}>
-                    <label>Title</label>
-                    <input type="text" name="title" onChange={handleChanges}/>
+                        <Title>Story</Title>
+                        <input type="text" name="story" onChange={handleChanges}/>
 
-                    <label>Story</label>
-                    <input type="text" name="story" onChange={handleChanges}/>
+                        <Title>Location</Title>
+                        <input type="text" name="location" onChange={handleChanges}/>
 
-                    <label>Location</label>
-                    <input type="text" name="location" onChange={handleChanges}/>
+                        <Title>Image Url</Title>
+                        <input type="text" name="img_link" onChange={handleChanges}/>
 
-                    <label>Image Url</label>
-                    <input type="text" name="img_link" onChange={handleChanges}/>
-
-                <button type="submit">Post</button>
-            </form>
+                    <Button type="submit">Post</Button>
+                </Form>
+            </FormContainer>
 
             <StoriesContainer>
                 {stories.map(story => {
@@ -119,8 +165,8 @@ function Home(props) {
                         <StoryCard>
 
                             <Story1>{story.title}</Story1>
-                            <p>{story.location}</p>
-                            <p>{story.story}</p>
+                            <Location>{story.location}</Location>
+                            <Story>{story.story}</Story>
                             
                             <StoryImg src={story.img_link}/>
                         </StoryCard>

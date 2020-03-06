@@ -43,7 +43,7 @@ function App() {
     const MenuDiv = styled.div `
       display: flex;
       align-items: center;
-      flex-basis: 40%;
+      flex-basis: 50%;
       justify-content: space-between;
     `;
 
@@ -74,7 +74,9 @@ function App() {
           <MenuLink to="/home">Home</MenuLink>
           <MenuLink to="/login">Login</MenuLink>
           <MenuLink to="/">Sign Up</MenuLink>
-          <MenuLink to="/qod">Quote of the Day</MenuLink>
+          <MenuLink to="/qod">Quote</MenuLink>
+          <MenuLink to="/profile" userid={userid}>Profile</MenuLink>
+          <MenuLink to="/login">Logout</MenuLink>
         </MenuDiv>
       </TopBar>
         
