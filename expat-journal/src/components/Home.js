@@ -42,8 +42,11 @@ const HomeContainer = styled.div `
     color: steelblue;
     font-weight: bold;
     /* font-family: 'Indie Flower', cursive; */
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin:20px;
+    border:1px solid black;
+    border-radius:3px;
+    padding:6px 5px;
 
     &:hover{
         color:rgb(33, 102, 134);
