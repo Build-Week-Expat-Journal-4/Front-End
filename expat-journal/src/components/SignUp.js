@@ -1,20 +1,17 @@
-import React, {useState} from 'react'
+import React, {useContext} from 'react'
 import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
 import axios from "axios"
 import signup from '../images/signup.jpeg'
+import {HomeContext} from "../contexts/HomeContext"
 
 function SignUp(props) {
 
     const { register, handleSubmit, errors } = useForm()
 
-    const [newUser, setNewUser] = useState({
-        first_name: '',
-        last_name: '',
-        username:'',
-        password:'',
-        email: ''
-    })
+    const {newUser, setNewUser} = useContext(HomeContext)
+
+    
 
     // const handleChanges = e => {
     //     setNewUser({

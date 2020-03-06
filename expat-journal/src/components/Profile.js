@@ -6,7 +6,7 @@ import { HomeContext } from "../contexts/HomeContext";
 function Profile() {
     const myuserid = window.localStorage.getItem("id")
 
-    const {stories, setStories, newStory, setNewStory, postid} = useContext(HomeContext)
+    const {stories, setStories, newStory, setNewStory, postid, newUser, setNewUser} = useContext(HomeContext)
     
     const [myStories, setMyStories] = useState([])
     const [editing, setEditing] = useState(false)
@@ -55,7 +55,7 @@ function Profile() {
           .then(response => {
             console.log("edit successful", response)
             setNewStory(response.data)
-            setEditing(false)
+            // setEditing(false)
         })
           .catch(error => {
             console.log(error)
@@ -64,58 +64,74 @@ function Profile() {
     
 
     return (
-        <div>
-            <h1>Profile</h1>
-            {myStories.map (mystuff => {
-                return (
-                    <div value={mystuff.id}>
-                    <h2>{mystuff.title}</h2>
-                    <p>{mystuff.location}</p>
-                    <p>{mystuff.story}</p>
-                    <img src={mystuff.img_link}/>
+        <div className="pagediv">
+            <div className="postsdiv">
+                <br></br>
+                <h1>Profile</h1>
+                {myStories.map (mystuff => {
+                    return (
+                        <div className="myposts" value={mystuff.id}>
+                        <h2>{mystuff.title}</h2>
+                        <p>{mystuff.location}</p>
+                        <p>{mystuff.story}</p>
+                        <img src={mystuff.img_link}/>
+                        
+                        <button onClick={() => handleEdit(mystuff)}>Edit</button>
+                        <button onClick={() => deleteStory(mystuff.id)}>Delete</button>
+
+                         
+
+                        </div>
+                    )
+
                     
-                    <button onClick={() => handleEdit(mystuff)}>Edit</button>
-                    <button onClick={() => deleteStory(mystuff.id)}>Delete</button>
+                })}
 
-                    </div>
-                )
-            })}
+                {/* opens edit input boxes when edit button is clicked */}
+                {editing && (
+                        <form className="editform" onSubmit={editStory}>
+                            <h3>Edit Story</h3>
+                            <label>
+                                Title
+                            <input onChange={e => 
+                            setNewStory({...newStory, title:e.target.value})
+                            }
+                            value={newStory.title}
+                            />
+                            </label>
 
-            {/* opens edit input boxes when edit button is clicked */}
-            {console.log(newStory)}
-            {editing && (
-                    <form onSubmit={editStory}>
-                        <h3>Edit Story</h3>
-                        <label>
-                            Title
-                        <input onChange={e => 
-                        setNewStory({...newStory, title:e.target.value})
-                        }
-                        value={newStory.title}
-                        />
-                        </label>
+                            <label>
+                                Location
+                            <input onChange={e => 
+                            setNewStory({...newStory, location: e.target.value})
+                            }
+                            value={newStory.location}
+                            />
+                            </label>
 
-                        <label>
-                            Location
-                        <input onChange={e => 
-                        setNewStory({...newStory, location: e.target.value})
-                        }
-                        value={newStory.location}
-                        />
-                        </label>
+                            <label>
+                                Story
+                            <textarea onChange={e => 
+                            setNewStory({...newStory, story:e.target.value})
+                            }
+                            value={newStory.story}
+                            />
+                            </label>
 
-                        <label>
-                            Story
-                        <input onChange={e => 
-                        setNewStory({...newStory, story:e.target.value})
-                        }
-                        value={newStory.story}
-                        />
-                        </label>
-                        <button type="submit">Save</button>
-                        <button onClick={() => setEditing(false)}>Cancel</button>
-                    </form>
-                    )} 
+                            <label>
+                                Image Url
+                            <input onChange={e => 
+                            setNewStory({...newStory, img_link:e.target.value})
+                            }
+                            value={newStory.img_link}
+                            />
+                            </label>
+                            <button type="submit">Save</button>
+                            <button onClick={() => setEditing(false)}>Cancel</button>
+                        </form>
+                        )}
+                
+            </div>
         </div>
     )
 }
